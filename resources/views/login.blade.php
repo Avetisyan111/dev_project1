@@ -13,11 +13,11 @@
         @csrf
         <label class="mt-1">Email</label>
         <div class="mt-1">
-            <input type="email" name="email" placeholder="email" required><br>
+            <input type="email" name="email" placeholder="Email" required><br>
         </div>
         <label class="mt-1">Password</label>
         <div class="mt-1">
-            <input type="password" name="password" placeholder="password" required><br>
+            <input type="password" name="password" placeholder="Password" required><br>
         </div>
         <div class="mt-2">
             <button type="submit" class="btn btn-outline-primary">Login</button>

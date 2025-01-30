@@ -22,7 +22,7 @@ class ProjectController extends Controller
     public function showProjects(): View
     {
         $userId = Auth::id();
-        $projects = Project::where('user_id', $userId)->paginate(4);
+        $projects = Project::where('user_id', $userId)->paginate(9);
 
         return view('project', compact('projects'));
     }
@@ -31,7 +31,7 @@ class ProjectController extends Controller
     {
         $project = Project::with('tasks')->findOrFail($projectId);
 
-        $tasks = $project->tasks()->paginate(4);
+        $tasks = $project->tasks()->paginate(8);
 
         return view('task', [
             'project' => $project,

@@ -13,19 +13,19 @@
             @csrf
             <label class="mt-1">First Name</label>
             <div class="mt-1">
-                <input type="text" name="firstName" required><br>
+                <input type="text" name="firstName" placeholder="First name" required><br>
             </div>
             <label class="mt-1">Last Name</label>
             <div class="mt-1">
-                <input type="text" name="lastName" required><br>
+                <input type="text" name="lastName" placeholder="Last name" required><br>
             </div>
             <label class="mt-1">Email</label>
             <div class="mt-1">
-                <input type="email" name="email" required><br>
+                <input type="email" name="email" placeholder="Email" required><br>
             </div>
             <label class="mt-1">Password</label>
             <div class="mt-1">
-                <input type="password" name="password" required><br>
+                <input type="password" name="password" placeholder="Password" required><br>
             </div>
             <label class="mt-1">Image</label>
             <div class="mt-1">

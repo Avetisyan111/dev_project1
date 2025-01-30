@@ -27,25 +27,40 @@
             </form>
         </div>
 
-        <div class="mt-4">
-            <h2>Project Tasks</h2>
-            @forelse($tasks as $task)
-                <h5 class="mt-4">Title: {{ $task->title }}</h5>
-                <p class="mt-3">Description: {{ $task->description }}</p>
-                <p>Status:
+        <h3 class="mt-3">All Tasks</h3>
+        <table>
+            <tr style="border: 2px solid black; padding: 10px;">
+                <th style="border: 2px solid black; padding: 10px;">Title</th>
+                <th style="border: 2px solid black; padding: 10px;">Description</th>
+                <th style="border: 2px solid black; padding: 10px;">Status</th>
+                <th style="border: 2px solid black; padding: 10px;">Mark as Completed</th>
+                <th style="border: 2px solid black; padding: 10px;">Mark as Not Completed</th>
+            </tr>
+            <tr style="border: 2px solid black; padding: 10px;">
+                @forelse($tasks as $task)
+                <td style="border: 2px solid black; padding: 10px;">{{ $task->title }}</td>
+                <td style="border: 2px solid black; padding: 10px;">{{ $task->description }}</td>
+                <td style="border: 2px solid black; padding: 10px;">
                     @if ($task->completed)
                         <span class="text-success">Completed</span>
                     @else
                         <span class="text-danger">Not Completed</span>
                     @endif
-                </p>
-                <a href="{{ route('updateTaskStatus', ['taskId' => $task->id, 'status' => 'completed']) }}" class="btn btn-outline-primary">Mark as Completed</a>
-                <a href="{{ route('updateTaskStatus', ['taskId' => $task->id, 'status' => 'not_completed']) }}" class="btn btn-outline-danger">Mark as Not Completed</a>
+                </td>
+                <td style="border: 2px solid black; padding: 10px;">
+                <a href="{{ route('updateTaskStatus', ['taskId' => $task->id, 'status' => 'completed']) }}"
+                   class="btn btn-outline-primary">Mark as Completed</a>
+                </td>
+                <td style="border: 2px solid black; padding: 10px;">
+                    <a href="{{ route('updateTaskStatus', ['taskId' => $task->id, 'status' => 'not_completed']) }}"
+                       class="btn btn-outline-danger">Mark as Not Completed</a>
+                </td>
+            </tr>
+                @empty
+                    <p>No tasks found for this project.</p>
+                @endforelse
+        </table>
 
-            @empty
-                <p>No tasks found for this project.</p>
-            @endforelse
-        </div>
         <div class="d-flex justify-content-center mt-4">
             {{ $tasks->links('pagination::bootstrap-5') }}
         </div>
