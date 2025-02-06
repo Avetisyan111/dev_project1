@@ -10,7 +10,7 @@
     <div align="center" class="mt-4">
         <h2>All Projects</h2>
 
-        <table>
+        <table class="mt-3">
             <tr style="border: 2px solid black; padding: 10px;">
                 <th style="border: 2px solid black; padding: 10px;">Project Name</th>
                 <th style="border: 2px solid black; padding: 10px;">Deadline</th>
@@ -32,15 +32,23 @@
                         @endif
                     </td>
                     <td style="border: 2px solid black; padding: 10px;">
-                        <a href="{{ route('updateProjectStatus', ['projectId' => $project->id, 'status' => 'completed']) }}"
-                           class="btn btn-outline-primary">Completed</a>
+                        <form action="{{ route('updateProjectStatus', ['projectId' => $project->id, 'status' => 'completed']) }}" method="POST">
+                            @csrf
+                            @method('PUT')
+                            <button type="submit" class="btn btn-outline-primary">Completed</button>
+                        </form>
+
                     </td>
                     <td style="border: 2px solid black; padding: 10px;">
-                        <a href="{{ route('updateProjectStatus', ['projectId' => $project->id, 'status' => 'not_completed']) }}"
-                           class="btn btn-outline-danger">Not Completed</a>
+                        <form action="{{ route('updateProjectStatus', ['projectId' => $project->id, 'status' => 'not_completed']) }}" method="POST">
+                            @csrf
+                            @method('PUT')
+                            <button type="submit" class="btn btn-outline-danger">Not Completed</button>
+                        </form>
+
                     </td>
                     <td style="border: 2px solid black; padding: 10px;">
-                        <a href="{{ route('showProjectTasks', ['projectId' => $project->id]) }}" class="btn btn-outline-primary">Show Tasks</a>
+                        <a href="{{ route('showProjectTasks', ['projectId' => $project->id ]) }}" class="btn btn-outline-primary">Show Tasks</a>
                     </td>
                 </tr>
                 @endforeach
@@ -52,9 +60,14 @@
             </div>
         </div>
 
-        <div>
+        <div class="mt-2">
+            <p><a href="{{ route('showAssignTasks') }}" class="btn btn-outline-primary">Show Assigned Tasks</a></p>
+        </div>
+
+        <div class="mt-2">
             <p><a href="{{ route('showUser') }}" class="btn btn-outline-primary">Get back to User page</a></p>
         </div>
+
     </div>
 </body>
 </html>

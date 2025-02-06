@@ -7,6 +7,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\TaskController;
 use App\Http\Controllers\Auth\LogoutController;
+use App\Http\Controllers\AssignTaskController;
 
 Route::get('/', function () {
     return view('login');
@@ -25,13 +26,19 @@ Route::middleware(['auth'])->group(function () {
 
     Route::get('/projects', [ProjectController::class, 'showProjects'])->name('showProjects');
     Route::get('/projects/{projectId}/tasks', [ProjectController::class, 'showProjectTasks'])->name('showProjectTasks');
-    Route::post('/project', [ProjectController::class, 'store'])->name('storeProject');
-    Route::get('/project/{projectId}/status/{status}', [ProjectController::class, 'updateProjectStatus'])
+
+    Route::post('/project', [ProjectController::class, 'storeProject'])->name('storeProject');
+    Route::put('/project/{projectId}/status/{status}', [ProjectController::class, 'updateProjectStatus'])
         ->name('updateProjectStatus');
-    Route::get('/task/{taskId}/status/{status}', [TaskController::class, 'updateTaskStatus'])
+    Route::put('/task/{taskId}/status/{status}', [TaskController::class, 'updateTaskStatus'])
         ->name('updateTaskStatus');
 
-    Route::post('/task', [TaskController::class, 'store'])->name('storeTask');
+    Route::post('/task', [TaskController::class, 'storeTask'])->name('storeTask');
+
+    Route::get('/showAssignTasks', [AssignTaskController::class, 'showTasks'])->name('showAssignTasks');
+    Route::post('/assignTask', [AssignTaskController::class, 'assignTask'])->name('assignTask');
+
+
 });
 
 

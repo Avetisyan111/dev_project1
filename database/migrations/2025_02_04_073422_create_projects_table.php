@@ -1,7 +1,5 @@
 <?php
 
-declare(strict_types=1);
-
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -18,7 +16,7 @@ return new class extends Migration
             $table->string('name');
             $table->string('deadline');
             $table->boolean('completed')->default(false);
-            $table->foreignId('user_id')->constrained('users')->onDelete('cascade'); // Foreign key to users table
+            $table->foreignId('user_id')->constrained('users')->ondelete('cascade');
             $table->timestamps();
         });
     }
